@@ -22,3 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local Netlify folder
+.netlify
+
+# Shell scripts
+deploy_web.sh
+push_repo.sh
