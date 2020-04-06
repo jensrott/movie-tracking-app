@@ -29,3 +29,6 @@ yarn-error.log*
 # Shell scripts
 deploy_web.sh
 push_repo.sh
+
+# Personal notes
+notes.md

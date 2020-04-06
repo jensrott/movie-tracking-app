@@ -26,7 +26,7 @@ const FavoriteMoviesList = ({ favorites }) => {
 }
 
 FavoriteMoviesList.propTypes = {
-    movies: PropTypes.array,
+    favorites: PropTypes.array,
 }
 
 export default FavoriteMoviesList
