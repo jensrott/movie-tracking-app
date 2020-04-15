@@ -14,7 +14,7 @@ const Spinner = ({ loading }) => {
     )
 }
 
-Error.propTypes = {
+Spinner.propTypes = {
     loading: PropTypes.bool
 }
 
