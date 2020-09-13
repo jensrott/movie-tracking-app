@@ -62,29 +62,34 @@ const Navigation = () => {
     return <>
         <div id="back-to-top-anchor" className={classes.root}>
             <AppBar position="static">
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Toolbar>
                         <Link to="/" className={classes.title}>
                             <LocalMoviesIcon className={classes.icon} />
 
-                            <Typography variant="h6" >
-                                Movie Search App
-                            </Typography>
+                            {mobileScreen ? (
+                                <Typography>
+                                    Movie Search App
+                                </Typography>
+                            ) : (
+                                <Typography variant="h6">
+                                    Movie Search App
+                                </Typography>
+                            )}
                         </Link>
                         {mobileScreen ?
                             <>
                                 <Link className={classes.hidden} to="/"><Button color="inherit">Movies</Button></Link>
                                 <Link className={classes.hidden} to="/favorites"><Button color="inherit">Favorites</Button></Link>
                                 <Link className={classes.hidden} to="/about"><Button color="inherit">About</Button></Link>
-                                <Brightness4Icon className={classes.hidden} onClick={toggleDarkthemeClick} />
+                                <Button><Brightness4Icon className={classes.hidden} onClick={toggleDarkthemeClick} /></Button>
                                 <SideDrawer />
                             </>
-
                             :
                             <>
                                 <Link className={classes.link} to="/"><Button color="inherit">Movies</Button></Link>
                                 <Link className={classes.link} to="/favorites"><Button color="inherit">Favorites</Button></Link>
-                                <Brightness4Icon className={classes.link} onClick={toggleDarkthemeClick} />
+                                <Button><Brightness4Icon className={classes.link} onClick={toggleDarkthemeClick} /></Button>
                             </>
                         }
 

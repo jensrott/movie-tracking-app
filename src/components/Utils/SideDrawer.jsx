@@ -105,9 +105,9 @@ const SideDrawer = () => {
                     </ListItem>
                 </Link>
 
-                <ListItem onClick={setDarkTheme} button>
+                <ListItem button>
                     <FormControlLabel
-                        control={<Switch color="primary" checked={checked} onChange={toggleChecked} />}
+                        control={<Switch color="primary" onClick={setDarkTheme} checked={checked} onChange={toggleChecked} />}
                         label="Dark Mode"
                     />
                 </ListItem>

@@ -4,6 +4,8 @@
 
 Movie app which allows to save favorites from [OMDb API](http://www.omdbapi.com/).
 
+![Movie Tracker - Animated gif demo](demo/demo.gif)
+
 ## Installation and setup
 
 Clone the repository 
@@ -49,3 +51,4 @@ npm run start
 * Change theme colors based on the season
 * Dark mode
 * Use Context API
+* Use [React-query](https://github.com/tannerlinsley/react-query) for cleaner data fetching

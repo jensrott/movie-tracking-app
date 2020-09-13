@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { useMediaQuery } from '@material-ui/core';
 
 import { Link } from 'react-router-dom';
 
@@ -15,9 +16,6 @@ import Error from '../components/Utils/Error';
 import Spinner from '../components/Utils/Spinner';
 
 import HomeIcon from '@material-ui/icons/Home';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-
-import { useDispatch } from 'react-redux';
 
 const MovieDetail = (props) => {
 
@@ -26,21 +24,7 @@ const MovieDetail = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
 
-    const dispatch = useDispatch()
-
-    const addFavorite = (movieObject) => {
-
-
-        console.log(movieObject);
-
-        dispatch(addFavorite(movieObject))
-        localStorage.setItem('favorites', JSON.stringify(movieObject))
-
-    }
-
-    const addFavoriteTest = () => {
-        addFavorite(movie)
-    }
+    const mobileScreen = useMediaQuery('(max-width: 768px)');
 
     const useStyles = makeStyles(({
         root: {
@@ -100,19 +84,21 @@ const MovieDetail = (props) => {
     return (
         <React.Fragment>
             {movie ? (
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Paper className={classes.root}>
                         <Grid wrap="wrap-reverse" container spacing={3}>
-                            <Grid item xs={12} sm={8}>
+                            {mobileScreen ? (
+                                <Grid item xs={12} sm={8}>
 
                                 {movie.Poster === 'N/A' ? (
                                     <img
+                                        style={{width: "100%"}}
                                         alt="placeholder_image"
                                         src="https://via.placeholder.com/150">
-
                                     </img>
                                 ) :
                                     (<img
+                                        style={{width: "100%"}}
                                         src={movie.Poster}
                                         alt="movie_poster">
                                     </img>
@@ -120,13 +106,33 @@ const MovieDetail = (props) => {
                                 }
 
                                 <div>
-                                    <p style={{ marginBottom: '1.5rem' }}> Plot: {movie.Plot}</p>
+                                    <p style={{ marginBottom: '1.5rem', maxWidth: 'initial' }}> Plot: {movie.Plot}</p>
                                 </div>
-
                             </Grid>
+                            ) : (
+                                <Grid item xs={12} sm={8}>
+
+                                    {movie.Poster === 'N/A' ? (
+                                        <img
+                                            alt="placeholder_image"
+                                            src="https://via.placeholder.com/150">
+                                        </img>
+                                    ) :
+                                        (<img
+                                            src={movie.Poster}
+                                            alt="movie_poster">
+                                        </img>
+                                        )
+                                    }
+
+                                    <div>
+                                        <p style={{ marginBottom: '1.5rem', maxWidth: '55%' }}> Plot: {movie.Plot}</p>
+                                    </div>
+                                </Grid>
+                            )}
+
                             <Grid item xs={12} sm={4}>
                                 <div>
-
                                     <Typography gutterBottom variant="h4" component="h4">{movie.Title}</Typography>
                                     <p>Genre: {movie.Genre}</p>
                                     <p>Released: {movie.Released}</p>
