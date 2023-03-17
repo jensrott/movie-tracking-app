@@ -42,12 +42,12 @@ npm run start
 * Delete Favorites
 * Form validation
 * Snackbar when adding or removing items
+* Dropdown list api results when typing
 * And more
 
 ## Features for later versions
 
 * Adding more tests
-* Dropdown list api results when typing
 * Change theme colors based on the season
 * Dark mode
 * Use Context API
